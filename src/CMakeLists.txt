@@ -1,0 +1,17 @@
+PROJECT(core)
+
+SET(core_SOURCES
+	main.cpp
+)
+
+SET(core_HEADERS
+)
+
+INCLUDE(${QT_USE_FILE})
+
+QT4_WRAP_CPP(core__HEADERS_MOC ${core_HEADERS})
+
+ADD_EXECUTABLE(core ${core_SOURCES} 
+    ${core_HEADERS_MOC})
+
+TARGET_LINK_LIBRARIES(core ${QT_LIBRARIES})
