@@ -4,11 +4,13 @@ SET(core_SOURCES
 	main.cpp
 	ofono.cpp
 	webserver.cpp
+	database.cpp
 )
 
 SET(core_HEADERS
 	ofono.h
 	webserver.h
+	database.h
 )
 
 INCLUDE(${QT_USE_FILE})
@@ -16,10 +18,11 @@ INCLUDE(${QT_USE_FILE})
 INCLUDE_DIRECTORIES(${ofono-qt_SOURCE_DIR})
 INCLUDE_DIRECTORIES(${mongoose_SOURCE_DIR})
 INCLUDE_DIRECTORIES(${QT_QTDBUS_INCLUDE_DIR})
+INCLUDE_DIRECTORIES(${QT_QTSQL_INCLUDE_DIR})
 
 QT4_WRAP_CPP(core_HEADERS_MOC ${core_HEADERS})
 
 ADD_EXECUTABLE(core ${core_SOURCES} 
     ${core_HEADERS_MOC})
 
-TARGET_LINK_LIBRARIES(core ${QT_LIBRARIES} ofono-qt mongoose)
+TARGET_LINK_LIBRARIES(core ${QT_LIBRARIES} ${QT_QTSQL_LIBRARY} ofono-qt mongoose)
