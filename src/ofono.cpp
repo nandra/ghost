@@ -24,6 +24,8 @@ void Ofono::on_ofonoManager_modemAdded(const QString &path)
 
 	/* Enable modem by default */
 	m_ofonoModem = new OfonoModem(OfonoModem::ManualSelect, path);
+
+    qDebug() << "Added" << m_ofonoModem->manufacturer() << m_ofonoModem->model() << m_ofonoModem->revision() << m_ofonoModem->serial();
     connect(m_ofonoModem, SIGNAL(poweredChanged(bool)), this, SLOT(on_ofonoModem_poweredChanged(bool)));
     connect(m_ofonoModem, SIGNAL(onlineChanged(bool)), this, SLOT(on_ofonoModem_onlineChanged(bool)));
 
