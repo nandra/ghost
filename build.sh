@@ -9,3 +9,5 @@ pushd ".build"
 cmake "$CURR" $@
 make -j5
 popd
+
+cp -r www/ .build/src/www
